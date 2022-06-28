@@ -2,8 +2,11 @@
   <button class="fmy-button" :class="[`fmy-button-${type}`,{
     'is-plain':plain,
     'is-round':round,
-    'is-circle':circle
-  }]" @click="handleClick">
+    'is-circle':circle,
+    'is-disabled':disabled
+  }]" 
+  :disabled="disabled"
+  @click="handleClick">
   <i v-show="icon" :class="icon"></i>
   <!-- 如果没有传入任何的内容，当我们没有传入插槽的时候 -->
    <span v-if="$slots.default"> <slot></slot></span>
@@ -36,6 +39,10 @@ export default {
             type:String,
             default:''
         },
+        disabled:{
+          type:Boolean,
+          default:false
+        }
         
     },
     methods: {
